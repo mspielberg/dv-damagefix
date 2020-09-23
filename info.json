@@ -1,0 +1,10 @@
+{
+  "Id": "DamageFix",
+  "DisplayName": "Damage Fix",
+  "Author": "Zeibach",
+  "Version": "0.1.0",
+  "AssemblyName": "DamageFix.dll",
+  "EntryMethod": "DvMod.DamageFix.Main.Load",
+  "HomePage": "https://www.nexusmods.com/derailvalley/mods/221",
+  "Repository": "https://raw.githubusercontent.com/mspielberg/dv-damagefix/master/resources/repository.json"
+}
