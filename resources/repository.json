@@ -1,6 +1,6 @@
 {
   "Releases":
   [
-      {"Id": "DamageFix", "Version": "0.1.0", "DownloadUrl": "https://github.com/mspielberg/dv-steamcutoff/releases/download/v0.1.0/DamageFix_0.1.0.zip"}
+      {"Id": "DamageFix", "Version": "0.1.0", "DownloadUrl": "https://github.com/mspielberg/dv-damagefix/releases/download/v0.1.0/DamageFix_0.1.0.zip"}
   ]
 }
