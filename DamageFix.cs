@@ -31,14 +31,14 @@ namespace DvMod.DamageFix
             }
         }
 
-        public static void PatchIterator(Harmony harmony, Type t, string name, MethodInfo transpiler)
+        public static void PatchIterator(Harmony harmony, Type t, string name, Func<IEnumerable<CodeInstruction>, IEnumerable<CodeInstruction>> transpiler)
         {
             var assembly = t.Assembly;
             var iteratorTypeName = $"{t.Name}+<{name}>";
             Main.DebugLog($"Searching for type starting with {iteratorTypeName}");
             var iteratorType = assembly.GetTypes().First(t => t.FullName.StartsWith(iteratorTypeName));
             var moveNext = iteratorType.GetMethod("MoveNext", BindingFlags.Instance | BindingFlags.NonPublic);
-            harmony.Patch(moveNext, transpiler: new HarmonyMethod(transpiler));
+            harmony.Patch(moveNext, transpiler: new HarmonyMethod(transpiler.Method));
         }
 
         [HarmonyPatch(typeof(CarDamageModel), nameof(CarDamageModel.DamageCar))]
@@ -78,7 +78,7 @@ namespace DvMod.DamageFix
                     harmony,
                     typeof(TrainStress),
                     nameof(TrainStress.DisableStressCheckForTwoSecondsCoro),
-                    AccessTools.Method(typeof(DamageFix), nameof(DamageFix.WaitTimeTranspiler)));
+                    WaitTimeTranspiler);
             }
         }
 
@@ -93,7 +93,7 @@ namespace DvMod.DamageFix
                     harmony,
                     typeof(TrainStress),
                     nameof(TrainStress.InitializeStressCoro),
-                    AccessTools.Method(typeof(DamageFix), nameof(DamageFix.WaitTimeTranspiler)));
+                    WaitTimeTranspiler);
             }
         }
 
