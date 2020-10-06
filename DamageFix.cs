@@ -48,9 +48,9 @@ namespace DvMod.DamageFix
             {
                 var car = TrainCar.Resolve(__instance.gameObject);
                 var track = car.Bogies[0].track;
-                var span = car.Bogies[0].traveller.Span;
+                var span = car.Bogies[0].traveller?.Span;
                 var speed = car.GetForwardSpeed();
-                Main.DebugLog($"{car.ID} damaged at {track.logicTrack.ID} span {span}, speed={speed * 3.6f} km/h, time={Time.time}");
+                Main.DebugLog($"{car.ID} damaged at {track?.logicTrack.ID} span {span}, speed={speed * 3.6f} km/h, time={Time.time}");
             }
         }
 
@@ -61,9 +61,9 @@ namespace DvMod.DamageFix
             {
                 var car = TrainCar.Resolve(__instance.gameObject);
                 var track = car.Bogies[0].track;
-                var span = car.Bogies[0].traveller.Span;
+                var span = car.Bogies[0].traveller?.Span;
                 var speed = car.GetForwardSpeed();
-                Main.DebugLog($"{car.ID} cargo damaged at {track.logicTrack.ID} span {span}, speed={speed * 3.6f} km/h, time={Time.time}");
+                Main.DebugLog($"{car.ID} cargo damaged at {track?.logicTrack.ID} span {span}, speed={speed * 3.6f} km/h, time={Time.time}");
             }
         }
 
